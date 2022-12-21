@@ -17,5 +17,5 @@ Make sure the input file (.csv) has the at least the following columns (includin
 Example of running the script:
 
 ```
-python3 src/anonymize.py "examples/data/example.csv"
+python3 src/anonymize.py "example/data/example.csv"
 ```
