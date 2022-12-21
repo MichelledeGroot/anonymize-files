@@ -23,10 +23,17 @@ def get_base_filename(file):
 
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
     input_file = sys.argv[1]
-    cases = read_excel(input_file)
-    cases["anonymizes_user"] = cases.apply(anonymize_id, axis=1)
-    write_to_excel(cases, get_base_filename(input_file))
+    cases = read_csv(input_file)
+    
+    mandatory_columns = {'aggregate_identifier', 'user'}
+    if check_mandatory_columns(cases, mandatory_columns):
+        logging.info("Creating anonymized ids...")     
+        cases["user"] = cases.apply(anonymize_id, axis=1)
+        write_to_csv(cases, get_base_filename(input_file))
+    else:
+        logging.error("Missing column, please check if the following columns are present in your dataset: %s" , mandatory_columns)
 
 
 main()    

@@ -1,9 +1,12 @@
+import logging, os
 import pandas as pd
 
-def read_excel(filename):
-    cases = pd.read_excel(filename)
-    return cases.loc[:, ["aggregate_identifier", "sequence_number","user"]]
+def read_csv(filename):
+    file = os.path.abspath(filename)
+    logging.info("Reading file: "+ file)
+    cases = pd.read_csv(file)
+    return cases
 
 
-    #print(selected_df.columns.values)
-    #print(selected_df.groupby("aggregate_identifier")[["sequence_number", "user"]].nunique())
+def check_mandatory_columns(cases, mandatory_columns):
+    return mandatory_columns.issubset(cases.columns)
