@@ -1,11 +1,21 @@
 # Anonymize IDs
 
-To run the script for anonymizing ids, first install the dependencies using:
+Clone the repository:
 
-> pip3 install -r requirements.txt (python 3)
+```
+git clone https://github.com/MichelledeGroot/anonymize-files.git
+```
+
+To run the script for anonymizing ids, first install the dependencies using (python 3):
+
+```
+pip3 install -r requirements.txt
+``` 
 
 Make sure the input file (.csv) has the at least the following columns (including column name): user and aggregate_identifier
 
 Example of running the script:
 
-> python3 anonymize.py "examples/data/example.csv"
+```
+python3 anonymize.py "examples/data/example.csv"
+```
